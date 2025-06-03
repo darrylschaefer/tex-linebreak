@@ -1,5 +1,9 @@
 # tex-linebreak
 
+A revised version of tex-linebreak that passes 'meta' / class attribute functionality downwards to the measurer
+
+# tex-linebreak
+
 ![npm version](https://img.shields.io/npm/v/tex-linebreak.svg)
 
 _tex-linebreak_ is a JavaScript library for laying out justified text as you
