@@ -125,6 +125,7 @@ export function layoutText(
   let items: TextInputItem[];
   let breakpoints;
   let positions: PositionedItem[];
+  console.log("Layout text reached.")
 
 
   try {
