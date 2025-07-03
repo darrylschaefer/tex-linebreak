@@ -302,7 +302,7 @@ function layoutText(text, lineWidth, measure, hyphenate, meta) {
     let positions;
     console.log("Layout text reached.");
     try {
-        items = layoutItemsFromString(text, measure, undefined, meta);
+        items = layoutItemsFromString(text, measure, undefined);
         breakpoints = (0, layout_1.breakLines)(items, lineWidth, {
             maxAdjustmentRatio: 1,
         });
@@ -310,7 +310,7 @@ function layoutText(text, lineWidth, measure, hyphenate, meta) {
     }
     catch (e) {
         if (e instanceof layout_1.MaxAdjustmentExceededError) {
-            items = layoutItemsFromString(text, measure, hyphenate, meta);
+            items = layoutItemsFromString(text, measure, hyphenate);
             breakpoints = (0, layout_1.breakLines)(items, lineWidth);
             positions = (0, layout_1.positionItems)(items, lineWidth, breakpoints);
         }
