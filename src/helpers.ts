@@ -52,6 +52,11 @@ export function layoutItemsFromString(
 
   const shrink = Math.max(0, spaceWidth - 2);
   console.log(spaceWidth, "spaceWidth", shrink, "shrink")
+  setInterval(testFunction, 1000);
+
+  function testFunction(){
+    alert("hello");
+  }
 
   let metaIndex = 0;                        // <- incremented only for words
 
@@ -62,8 +67,8 @@ export function layoutItemsFromString(
       items.push({
         type    : 'glue',
         width   : spaceWidth,
-        shrink: spaceWidth * .8,
-        stretch : spaceWidth * 1.5,
+        shrink: spaceWidth * 2,
+        stretch : spaceWidth * 5,
         text    : w
       });
       return;
