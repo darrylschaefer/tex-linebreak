@@ -355,7 +355,8 @@ hyphenateFn, meta = [] // default to []
     const spaceWidth = measureFn(' ');
     const hyphenWidth = measureFn('-');
     const isSpace = (w) => /\s/.test(w.charAt(0));
-    const shrink = Math.max(0, spaceWidth - 2);
+    const MIN_SPACE = 7; // px you never want to go below
+    const shrink = Math.max(0, spaceWidth - MIN_SPACE);
     let metaIndex = 0; // <- incremented only for words
     chunks.forEach(w => {
         if (isSpace(w)) {
@@ -363,7 +364,7 @@ hyphenateFn, meta = [] // default to []
             items.push({
                 type: 'glue',
                 width: spaceWidth,
-                shrink: spaceWidth * .9,
+                shrink: shrink,
                 stretch: spaceWidth * 1.5,
                 text: w
             });
@@ -464,7 +465,7 @@ function addItemsForTextNode(items, node, measureFn, hyphenateFn) {
     const text = node.nodeValue;
     const el = node.parentNode;
     const spaceWidth = measureFn(el, ' ');
-    const shrink = Math.max(0, spaceWidth - 3);
+    const shrink = Math.max(0, spaceWidth - 7);
     const hyphenWidth = measureFn(el, '-');
     const isSpace = (word) => /\s/.test(word.charAt(0));
     const chunks = text.split(/(\s+)/).filter((w) => w.length > 0);

@@ -50,7 +50,8 @@ export function layoutItemsFromString(
   const hyphenWidth = measureFn('-');
   const isSpace     = (w: string) => /\s/.test(w.charAt(0));
 
-  const shrink = Math.max(0, spaceWidth - 2);
+  const MIN_SPACE = 7;                // px you never want to go below
+  const shrink = Math.max(0, spaceWidth - MIN_SPACE);
   let metaIndex = 0;                        // <- incremented only for words
 
   chunks.forEach(w => {
@@ -60,7 +61,7 @@ export function layoutItemsFromString(
       items.push({
         type    : 'glue',
         width   : spaceWidth,
-        shrink: spaceWidth * .9,
+        shrink: shrink,
         stretch : spaceWidth * 1.5,
         text    : w
       });
