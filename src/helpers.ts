@@ -51,13 +51,6 @@ export function layoutItemsFromString(
   const isSpace     = (w: string) => /\s/.test(w.charAt(0));
 
   const shrink = Math.max(0, spaceWidth - 2);
-  console.log(spaceWidth, "spaceWidth", shrink, "shrink")
-  setInterval(testFunction, 1000);
-
-  function testFunction(){
-    alert("hello");
-  }
-
   let metaIndex = 0;                        // <- incremented only for words
 
   chunks.forEach(w => {
@@ -67,8 +60,8 @@ export function layoutItemsFromString(
       items.push({
         type    : 'glue',
         width   : spaceWidth,
-        shrink: spaceWidth * 2,
-        stretch : spaceWidth * 5,
+        shrink: spaceWidth * .9,
+        stretch : spaceWidth * 1.5,
         text    : w
       });
       return;
@@ -130,18 +123,17 @@ export function layoutText(
   let items: TextInputItem[];
   let breakpoints;
   let positions: PositionedItem[];
-  console.log("Layout text reached.")
 
 
   try {
-    items = layoutItemsFromString(text, measure, undefined);
+    items = layoutItemsFromString(text, measure, undefined, meta);
     breakpoints = breakLines(items, lineWidth, {
       maxAdjustmentRatio: 1,
     });
     positions = positionItems(items, lineWidth, breakpoints);
   } catch (e) {
     if (e instanceof MaxAdjustmentExceededError) {
-      items = layoutItemsFromString(text, measure, hyphenate);
+      items = layoutItemsFromString(text, measure, hyphenate, meta);
       breakpoints = breakLines(items, lineWidth);
       positions = positionItems(items, lineWidth, breakpoints);
     } else {
