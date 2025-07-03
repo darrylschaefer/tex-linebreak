@@ -355,7 +355,7 @@ hyphenateFn, meta = [] // default to []
     const spaceWidth = measureFn(' ');
     const hyphenWidth = measureFn('-');
     const isSpace = (w) => /\s/.test(w.charAt(0));
-    const MIN_SPACE = 6; // px you never want to go below
+    const MIN_SPACE = 5.75; // px you never want to go below
     const shrink = Math.max(0, spaceWidth - MIN_SPACE);
     let metaIndex = 0; // <- incremented only for words
     chunks.forEach(w => {
@@ -465,7 +465,7 @@ function addItemsForTextNode(items, node, measureFn, hyphenateFn) {
     const text = node.nodeValue;
     const el = node.parentNode;
     const spaceWidth = measureFn(el, ' ');
-    const shrink = Math.max(0, spaceWidth - 6);
+    const shrink = Math.max(0, spaceWidth - 5.75);
     const hyphenWidth = measureFn(el, '-');
     const isSpace = (word) => /\s/.test(word.charAt(0));
     const chunks = text.split(/(\s+)/).filter((w) => w.length > 0);

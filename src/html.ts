@@ -37,7 +37,7 @@ function addItemsForTextNode(
   const el = node.parentNode! as Element;
 
   const spaceWidth = measureFn(el, ' ');
-  const shrink = Math.max(0, spaceWidth - 6);
+  const shrink = Math.max(0, spaceWidth - 5.75);
   const hyphenWidth = measureFn(el, '-');
   const isSpace = (word: string) => /\s/.test(word.charAt(0));
 
