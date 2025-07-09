@@ -51,7 +51,7 @@ export function layoutItemsFromString(
   const isSpace     = (w: string) => /\s/.test(w.charAt(0));
 
   const MIN_SPACE = 5.75;                // px you never want to go below
-  const shrink = Math.max(0, spaceWidth - spaceWidth * .2);
+  const shrink = Math.max(0, spaceWidth - spaceWidth * .5);
   let metaIndex = 0;                        // <- incremented only for words
 
   chunks.forEach(w => {
@@ -77,7 +77,13 @@ export function layoutItemsFromString(
       meta : metaItem
     });
 
-    if (hyphenateFn) {
+    console.log(metaItem, "meta");
+      // ——— New flag ————————————————————————————————
+    const canHyphenate =
+    hyphenateFn && !(metaItem?.classes?.includes('newLine'));
+    // ———————————————————————————————————————————————
+
+    if (canHyphenate) {
       const parts = hyphenateFn(w);
       parts.forEach((part, j) => {
         pushBox(part);

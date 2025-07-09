@@ -235,9 +235,10 @@ hyphenateFn, meta = [] // default to []
     const hyphenWidth = measureFn('-');
     const isSpace = (w) => /\s/.test(w.charAt(0));
     const MIN_SPACE = 5.75; // px you never want to go below
-    const shrink = Math.max(0, spaceWidth - spaceWidth * .2);
+    const shrink = Math.max(0, spaceWidth - spaceWidth * .5);
     let metaIndex = 0; // <- incremented only for words
     chunks.forEach(w => {
+        var _a;
         if (isSpace(w)) {
             // plain glue; no meta & no metaIndex++
             items.push({
@@ -257,7 +258,11 @@ hyphenateFn, meta = [] // default to []
             text: txt,
             meta: metaItem
         });
-        if (hyphenateFn) {
+        console.log(metaItem, "meta");
+        // ——— New flag ————————————————————————————————
+        const canHyphenate = hyphenateFn && !((_a = metaItem === null || metaItem === void 0 ? void 0 : metaItem.classes) === null || _a === void 0 ? void 0 : _a.includes('newLine'));
+        // ———————————————————————————————————————————————
+        if (canHyphenate) {
             const parts = hyphenateFn(w);
             parts.forEach((part, j) => {
                 pushBox(part);
