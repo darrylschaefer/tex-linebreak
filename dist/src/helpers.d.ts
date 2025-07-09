@@ -24,7 +24,7 @@ type MeasureFn = (word: string, meta?: {
     classes?: string[];
 }) => number;
 export declare function layoutItemsFromString(s: string, measureFn: MeasureFn, // <── updated
-hyphenateFn?: (word: string) => string[], meta?: {
+hyphenateFn?: (word: string, meta: Object) => string[], meta?: {
     classes?: string[];
 }[]): TextInputItem[];
 /**

@@ -40,7 +40,7 @@ type MeasureFn = (word: string, meta?: { classes?: string[] }) => number;
 export function layoutItemsFromString(
   s: string,
   measureFn: MeasureFn,                     // <── updated
-  hyphenateFn?: (word: string) => string[],
+  hyphenateFn?: (word: string, meta: Object) => string[],
   meta: { classes?: string[] }[] = []       // default to []
 ): TextInputItem[] {
   const items: TextInputItem[] = [];
@@ -77,14 +77,13 @@ export function layoutItemsFromString(
       meta : metaItem
     });
 
-    console.log(metaItem, "meta");
       // ——— New flag ————————————————————————————————
-    const canHyphenate =
-    hyphenateFn && !(metaItem?.classes?.includes('newLine'));
+    // const canHyphenate =
+    // hyphenateFn && !(metaItem?.classes?.includes('newLine'));
     // ———————————————————————————————————————————————
 
-    if (canHyphenate) {
-      const parts = hyphenateFn(w);
+    if (hyphenateFn) {
+      const parts = hyphenateFn(w, metaItem);
       parts.forEach((part, j) => {
         pushBox(part);
         if (j < parts.length - 1) {
