@@ -103,7 +103,7 @@ export const MIN_COST = -1000;
  */
 export const MAX_COST = 1000;
 
-const MIN_ADJUSTMENT_RATIO = -.5;
+const MIN_ADJUSTMENT_RATIO = -.3;
 
 function isForcedBreak(item: InputItem) {
   return item.type === 'penalty' && item.cost <= MIN_COST;

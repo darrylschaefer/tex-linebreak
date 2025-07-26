@@ -836,7 +836,7 @@ exports.MIN_COST = -1000;
  * Values >= `MAX_COST` prevent a break.
  */
 exports.MAX_COST = 1000;
-const MIN_ADJUSTMENT_RATIO = -.5;
+const MIN_ADJUSTMENT_RATIO = -.3;
 function isForcedBreak(item) {
     return item.type === 'penalty' && item.cost <= exports.MIN_COST;
 }
