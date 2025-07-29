@@ -50,8 +50,8 @@ export function layoutItemsFromString(
   const hyphenWidth = measureFn('-');
   const isSpace     = (w: string) => /\s/.test(w.charAt(0));
 
-  const MIN_SPACE = 5.75;                // px you never want to go belo
-  const shrink = Math.max(0, spaceWidth - spaceWidth * .5);
+//  const MIN_SPACE = 5.75;                // px you never want to go belo
+  const shrink = Math.max(0, spaceWidth - spaceWidth * .2);
   let metaIndex = 0;                        // <- incremented only for words
 
   chunks.forEach(w => {

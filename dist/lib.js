@@ -234,8 +234,8 @@ hyphenateFn, meta = [] // default to []
     const spaceWidth = measureFn(' ');
     const hyphenWidth = measureFn('-');
     const isSpace = (w) => /\s/.test(w.charAt(0));
-    const MIN_SPACE = 5.75; // px you never want to go belo
-    const shrink = Math.max(0, spaceWidth - spaceWidth * .5);
+    //  const MIN_SPACE = 5.75;                // px you never want to go belo
+    const shrink = Math.max(0, spaceWidth - spaceWidth * .2);
     let metaIndex = 0; // <- incremented only for words
     chunks.forEach(w => {
         if (isSpace(w)) {
@@ -774,7 +774,7 @@ exports.MIN_COST = -1000;
  * Values >= `MAX_COST` prevent a break.
  */
 exports.MAX_COST = 1000;
-const MIN_ADJUSTMENT_RATIO = -.3;
+const MIN_ADJUSTMENT_RATIO = -.15;
 function isForcedBreak(item) {
     return item.type === 'penalty' && item.cost <= exports.MIN_COST;
 }
