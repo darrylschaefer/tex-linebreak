@@ -51,7 +51,7 @@ export function layoutItemsFromString(
   const isSpace     = (w: string) => /\s/.test(w.charAt(0));
 
 //  const MIN_SPACE = 5.75;                // px you never want to go belo
-  const shrink = Math.max(0, spaceWidth - spaceWidth * .2);
+  const shrink = Math.max(0, spaceWidth - spaceWidth * .0);
   let metaIndex = 0;                        // <- incremented only for words
 
   chunks.forEach(w => {
