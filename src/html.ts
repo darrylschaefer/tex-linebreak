@@ -38,7 +38,9 @@ function addItemsForTextNode(
 
   const spaceWidth = measureFn(el, ' ');
   // const shrink = Math.max(0, spaceWidth - spaceWidth * .0);
-  const shrink = Math.max(0, spaceWidth - 3);
+//  const shrink = Math.max(0, spaceWidth - 3);
+  const stretch = 0.5 * spaceWidth; // TeX-like
+const shrink = 0.333 * spaceWidth; // TeX-like
   console.log("Shrinking to: ", shrink)
   const hyphenWidth = measureFn(el, '-');
   const isSpace = (word: string) => /\s/.test(word.charAt(0));
@@ -52,7 +54,7 @@ function addItemsForTextNode(
         type: 'glue',
         width: spaceWidth,
         shrink,
-        stretch: spaceWidth,
+        stretch: stretch,
         node,
         start: textOffset,
         end: textOffset + w.length,
@@ -362,7 +364,7 @@ export function justifyContent(
       // First try without hyphenation but a maximum stretch-factor for each
       // space.
       breakpoints = breakLines(items, lineWidth, {
-        maxAdjustmentRatio: 2.0,
+        maxAdjustmentRatio: 1.0,
       });
     } catch (e) {
       if (e instanceof MaxAdjustmentExceededError) {

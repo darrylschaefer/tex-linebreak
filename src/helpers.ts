@@ -52,7 +52,9 @@ export function layoutItemsFromString(
 
 //  const MIN_SPACE = 5.75;                // px you never want to go belo
 //  const shrink = Math.max(0, spaceWidth - spaceWidth * .0);
-  const shrink = Math.max(0, spaceWidth - 2);
+//  const shrink = Math.max(0, spaceWidth - 2);
+  const stretch = 0.5 * spaceWidth; // TeX-like
+const shrink = 0.333 * spaceWidth; // TeX-like
    console.log("Shrinking to: ", shrink)
 
   let metaIndex = 0;                        // <- incremented only for words
@@ -65,7 +67,7 @@ export function layoutItemsFromString(
         type    : 'glue',
         width   : spaceWidth,
         shrink: shrink,
-        stretch : spaceWidth * 1.5,
+        stretch : stretch,
         text    : w
       });
       return;
