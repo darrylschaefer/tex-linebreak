@@ -53,6 +53,8 @@ export function layoutItemsFromString(
 //  const MIN_SPACE = 5.75;                // px you never want to go belo
 //  const shrink = Math.max(0, spaceWidth - spaceWidth * .0);
   const shrink = Math.max(0, spaceWidth - 2);
+   console.log("Shrinking to: ", shrink)
+
   let metaIndex = 0;                        // <- incremented only for words
 
   chunks.forEach(w => {
