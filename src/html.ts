@@ -41,7 +41,6 @@ function addItemsForTextNode(
 //  const shrink = Math.max(0, spaceWidth - 3);
   const stretch = 0.5 * spaceWidth; // TeX-like
 const shrink = 0.333 * spaceWidth; // TeX-like
-  console.log("Shrinking to: ", shrink)
   const hyphenWidth = measureFn(el, '-');
   const isSpace = (word: string) => /\s/.test(word.charAt(0));
 
