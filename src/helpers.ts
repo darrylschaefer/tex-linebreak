@@ -55,7 +55,8 @@ export function layoutItemsFromString(
 //  const shrink = Math.max(0, spaceWidth - 2);
   const stretch = 0.5 * spaceWidth; // TeX-like
 const shrink = 0.333 * spaceWidth; // TeX-like
-   console.log("Shrinking to: ", shrink)
+   console.log("Shrink to: ", shrink)
+  console.log("Stretch to: ", shrink)
 
   let metaIndex = 0;                        // <- incremented only for words
 
