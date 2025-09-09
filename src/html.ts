@@ -363,7 +363,7 @@ export function justifyContent(
       // First try without hyphenation but a maximum stretch-factor for each
       // space.
       breakpoints = breakLines(items, lineWidth, {
-        maxAdjustmentRatio: 1.0,
+        maxAdjustmentRatio: 2.0,
       });
     } catch (e) {
       if (e instanceof MaxAdjustmentExceededError) {
