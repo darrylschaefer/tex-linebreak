@@ -1,6 +1,3 @@
-/**
- * An object (eg. a word) to be typeset.
- */
 export interface Box {
     type: 'box';
     /** Amount of space required by this content. Must be >= 0. */
@@ -78,6 +75,16 @@ export interface Options {
      * Penalty for significant differences in the tightness of adjacent lines.
      */
     adjacentLooseTightPenalty: number;
+    /**
+     * Extra demerits applied if the final line is too short compared to the
+     * target line length. Set to 0 or undefined to disable.
+     */
+    widowPenalty?: number;
+    /**
+     * Consider the last line "too short" if actual/ideal < minLastLineRatio.
+     * Typical values: 0.20–0.30. Undefined disables the check.
+     */
+    minLastLineRatio?: number;
 }
 /**
  * Minimum cost for a breakpoint.

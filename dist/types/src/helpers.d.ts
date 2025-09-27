@@ -13,6 +13,15 @@ export type TextInputItem = TextBox | TextGlue | Penalty;
  * A convenience function that generates a set of input items for `breakLines`
  * from a string.
  *
+ * Notes on whitespace handling:
+ * - ASCII space/tab/newline runs are collapsed to a single breakable space.
+ * - NBSP (U+00A0) runs are treated as unbreakable boxes.
+ * - Other Unicode spaces (thin/en/em etc.) are kept as measured glues with
+ *   stretch/shrink scaled to their actual width.
+ *
+ * Punctuation-aware break penalties:
+ * - Discourage breaks after closing punctuation and before opening punctuation.
+ *
  * @param s - Text to process
  * @param measureFn - Callback that calculates the width of a given string
  * @param hyphenateFn - Callback that calculates legal hyphenation points in
@@ -34,7 +43,7 @@ hyphenateFn?: (word: string, meta: Object) => string[], meta?: {
  * @param lineWidth - Width for each line
  * @param measure - Function which is called to measure each word or space in the input
  * @param hyphenate - Function which is called to split words at possible
-* @param meta - A meta object that passes the associated CSS "classes" downwards
+ * @param meta - A meta object that passes the associated CSS "classes" downwards
  * hyphenation points
  */
 export declare function layoutText(text: string, lineWidth: number | number[], measure: (word: string) => number, hyphenate: (word: string) => string[], meta?: any[]): {
